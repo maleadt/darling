@@ -17,11 +17,10 @@ plans actually produced), and each ends in working, tested software.
 | 7 | Finder.app (windows, sidebar, icon/list views, `.DS_Store`, styled windows, file ops, eject, reveal) | darling | 4, 5 | — |
 | 8 | Launcher "open host file", `.desktop` + MIME, packaging; end-to-end test | darling (src/startup, packaging) | 6, 7 | — |
 
-**Known gap found in plan 6 (a plan 7 prerequisite):** Foundation decomposes non-ASCII characters in file URLs and
-`fileSystemRepresentation` (`ü` becomes `u` + U+0308), so a file whose name is precomposed, as Linux names usually
-are, is not found through them. Opening `Ünï.dmg` with DiskImageMounter fails with "No such file or directory", and
-Finder would hit it in every listing. It belongs in Foundation/CoreFoundation (the path to file-system-representation
-conversion), not in the applications; `tests/disk-image-mounter.sh` leaves non-ASCII image names out until then.
+**Gap found in plan 6, fixed in plan 7a:** Foundation decomposes non-ASCII characters in file URLs and
+`fileSystemRepresentation` (`ü` becomes `u` + U+0308), on macOS as in Darling, so a file whose name is precomposed, as
+Linux names usually are, was not found through them. macOS finds it because APFS is normalization-insensitive. Plan 7a
+makes libsystem_kernel's path lookup the same (`tests/path-normalization.md`).
 
 ## Common rules for every plan
 
