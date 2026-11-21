@@ -14,8 +14,10 @@ plans actually produced), and each ends in working, tested software.
 | 4 | Foundation volume enumeration, NSURL volume keys, trash; NSWorkspace volumes, eject, mount notifications, `iconForFile:`, recycle, reveal | xnu, corefoundation, foundation, cocotron, darling (CoreServices) | 3 | done: `2026-11-16-workspace-volumes.md` |
 | 5 | NSCollectionView (modern API, layouts, selection, drag & drop); pasteboard file URLs | cocotron, darling (UIFoundation) | — (parallel to 1–4) | done: `2026-11-20-collection-view.md` |
 | 6 | DiskImageMounter.app (licence UI, attach, open volume) | corefoundation, darling-dmg, cocotron, darling (CoreServices, DiskImageMounter) | 2, 4 | done: `2026-11-21-disk-image-mounter.md` |
-| 7 | Finder.app (windows, sidebar, icon/list views, `.DS_Store`, styled windows, file ops, eject, reveal) | darling | 4, 5 | — |
-| 8 | Launcher "open host file", `.desktop` + MIME, packaging; end-to-end test | darling (src/startup, packaging) | 6, 7 | — |
+| 7a | Finder.app: browsing, icon/list views, sidebar, open, reveal, eject; normalization-insensitive lookup | xnu, cocotron, corefoundation, foundation, darling (Finder, tools) | 4, 5 | done: `2026-11-21-finder-browser.md` |
+| 7b | `.DS_Store` reader, styled disk-image windows | darling | 7a | — |
+| 7c | File operations: drag & drop and paste copy/move, new folder, rename, Trash, Get Info, progress and conflicts | darling | 7a | — |
+| 8 | Launcher "open host file", `.desktop` + MIME, packaging; end-to-end test | darling (src/startup, packaging) | 6, 7a–7c | — |
 
 **Gap found in plan 6, fixed in plan 7a:** Foundation decomposes non-ASCII characters in file URLs and
 `fileSystemRepresentation` (`ü` becomes `u` + U+0308), on macOS as in Darling, so a file whose name is precomposed, as
