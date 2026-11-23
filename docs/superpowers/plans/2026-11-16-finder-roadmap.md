@@ -17,7 +17,7 @@ plans actually produced), and each ends in working, tested software.
 | 7a | Finder.app: browsing, icon/list views, sidebar, open, reveal, eject; normalization-insensitive lookup | xnu, cocotron, corefoundation, foundation, darling (Finder, tools) | 4, 5 | done: `2026-11-21-finder-browser.md` |
 | 7b | `.DS_Store` reader, styled disk-image windows | corefoundation, foundation, cocotron, darling-dmg, darling (Finder) | 7a | done: `2026-11-21-finder-styled-windows.md`; open: read back a Finder-written styled folder on macOS (needs Automation consent, see `tests/finder.md`) |
 | 7c | File operations: drag & drop and paste copy/move, new folder, rename, Trash, Get Info, progress and conflicts | darling, cocotron | 7a | done: `2026-11-22-finder-file-operations.md`; open: Trash for items on a volume without one (`/Volumes/SystemRoot`), `NSURLFileResourceIdentifierKey` in CoreFoundation |
-| 8 | Launcher "open host file", `.desktop` + MIME, packaging; end-to-end test | darling (src/startup, packaging) | 6, 7a–7c | — |
+| 8 | Launcher "open host file", `.desktop` + MIME, packaging; end-to-end test | darling (src/startup, packaging) | 6, 7a–7c | done: `2026-11-23-open-from-linux-desktop.md` (`darling open <file>...`, `tests/open-disk-image.md`) |
 
 **Gap found in plan 6, fixed in plan 7a:** Foundation decomposes non-ASCII characters in file URLs and
 `fileSystemRepresentation` (`ü` becomes `u` + U+0308), on macOS as in Darling, so a file whose name is precomposed, as
